@@ -1,0 +1,229 @@
+% --- VVER-1000 LEU and MOX computational Benchmark --------------------------------------
+%U3.7- fresh uranium fuel with enrichment 3.7%
+%TVEG-fresh fuel with 4% gadolinium and uranium 3.6% 
+%PU1-MOX fuel with enrichment 2.0%
+%PU2-MOX fuel with enrichment 3.0%
+%PU3-MOX fuel with enrichment 4.2% 
+
+set title "VVER-1000 LEU and MOX computational Benchmark"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Pincells
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pin 1
+U3.7    0.3860
+clad    0.4582
+water 
+
+pin 2
+TVEG      0.3860
+clad      0.4582
+water
+
+pin 6   %guide tube%
+water    0.545
+clad     0.6323
+water
+
+pin 7    %central tube%
+water     0.480
+clad      0.5626
+water
+
+pin W
+water
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Surfaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+surf 1   hexxc    0.0    0.0    11.8
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Lattices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Fresh UOX Lattice with 12 ifba (type = 2, pin pitch = 1.275 cm):
+
+lat 10  3  0.0 0.0 23 23 1.275
+
+ W W W W W W W W W W W W W W W W W W W W W W W
+  W W W W W W W W W W W 1 1 1 1 1 1 1 1 1 1 1 W
+   W W W W W W W W W W 1 1 1 1 1 1 1 1 1 1 1 1 W 
+    W W W W W W W W W 1 1 1 1 1 1 2 1 1 1 1 1 1 W
+     W W W W W W W W 1 1 1 1 1 1 1 1 1 1 1 1 1 1 W
+      W W W W W W W 1 1 1 1 1 1 1 6 1 1 1 1 1 1 1 W
+       W W W W W W 1 1 1 1 1 6 1 1 1 1 6 1 1 1 1 1 W
+        W W W W W 1 1 2 1 1 1 1 1 1 2 1 1 1 1 2 1 1 W
+         W W W W 1 1 1 1 6 1 2 1 6 1 1 1 1 6 1 1 1 1 W 
+          W W W 1 1 1 1 1 1 1 1 1 1 1 6 1 1 1 1 1 1 1 W
+           W W 1 1 1 1 1 1 1 6 1 1 1 1 1 2 1 1 1 1 1 1 W
+            W 1 1 1 1 1 6 1 1 1 1 7 1 1 1 1 6 1 1 1 1 1 W
+             W 1 1 1 1 1 1 2 1 1 1 1 1 6 1 1 1 1 1 1 1 W W 
+              W 1 1 1 1 1 1 1 6 1 1 1 1 1 1 1 1 1 1 1 W W W
+               W 1 1 1 1 6 1 1 1 1 6 1 2 1 6 1 1 1 1 W W W W
+		        W 1 1 2 1 1 1 1 2 1 1 1 1 1 1 2 1 1 W W W W W 
+		         W 1 1 1 1 1 6 1 1 1 1 6 1 1 1 1 1 W W W W W W
+		          W 1 1 1 1 1 1 1 6 1 1 1 1 1 1 1 W W W W W W W
+		           W 1 1 1 1 1 1 1 1 1 1 1 1 1 1 W W W W W W W W 
+		            W 1 1 1 1 1 1 2 1 1 1 1 1 1 W W W W W W W W W
+		             W 1 1 1 1 1 1 1 1 1 1 1 1 W W W W W W W W W W
+		              W 1 1 1 1 1 1 1 1 1 1 1 W W W W W W W W W W W
+		               W W W W W W W W W W W W W W W W W W W W W W W 
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Cells
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Fresh UOX Lattice with 12 ifba: 
+	
+cell  0 0  fill 10        -1  
+cell  1 0  outside         1  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%              Materials
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Fuel:
+
+% --- U3.7 (yellow):
+
+%mat U3.7     sum  tmp 1027 rgb 255 255 0 burn 1 %For states S1 and S2%
+%92235.09c    8.6264E-04
+%92238.09c    2.2169E-02
+% 8016.09c    4.6063E-02
+ 
+mat U3.7     sum  tmp 575 rgb 255 255 0 burn 1 %For states S3 and S4%
+92235.03c   8.6264E-04
+92238.03c   2.2169E-02
+ 8016.03c   4.6063E-02
+
+%mat U3.7    sum  tmp 300 rgb 255 255 0 burn 1 %For state S5%
+%92235.03c   8.6264E-04
+%92238.03c   2.2169E-02
+% 8016.03c   4.6063E-02
+
+% --- TVEG (light green):
+
+%mat TVEG     sum  tmp 1027 rgb 0 255 153 burn 1  %For states S1 and S2%
+%92235.09c    7.2875E-04
+%92238.09c    1.9268E-02
+% 8016.09c    4.1854E-02
+%64152.09c    2.5159E-06
+%64154.09c    2.7303E-05
+%64155.09c    1.8541E-04
+%64156.09c    2.5602E-04
+%64157.09c    1.9480E-04
+%64158.09c    3.0715E-04
+%64160.09c    2.6706E-04
+ 
+mat TVEG     sum  tmp 575 rgb 0 255 153 burn 1  %For states S3 and S4%
+92235.03c    7.2875E-04
+92238.03c    1.9268E-02
+ 8016.03c    4.1854E-02
+64152.03c    2.5159E-06
+64154.03c    2.7303E-05
+64155.03c    1.8541E-04
+64156.03c    2.5602E-04
+64157.03c    1.9480E-04
+64158.03c    3.0715E-04
+64160.03c    2.6706E-04
+
+%mat TVEG     sum  tmp 300 rgb 0 255 153 burn 1 %For states S1, S2, S3 and S4%
+%92235.03c    7.2875E-04
+%92238.03c    1.9268E-02
+% 8016.03c    4.1854E-02
+%64152.03c    2.5159E-06
+%64154.03c    2.7303E-05
+%64155.03c    1.8541E-04
+%64156.03c    2.5602E-04
+%64157.03c    1.9480E-04
+%64158.03c    3.0715E-04
+%64160.03c    2.6706E-04
+
+% --- Cladding material zirconium alloy:
+
+mat clad   sum tmp 575 rgb 150 150 150  %For states S1, S2, S3 and S4%
+40000.03c  4.259E-02
+41093.03c  4.225E-04
+72000.03c  6.597E-06
+
+%mat clad   sum tmp 300 rgb 150 150 150  %For states S1, S2, S3 and S4%
+%40000.03c  4.259E-02
+%41093.03c  4.225E-04
+%72000.03c  6.597E-06
+
+% --- Water:
+
+% --- MOD1:
+
+%mat water   sum tmp 575 rgb 0 0 255 moder lwtr 1001
+%1001.03c    4.843E-02
+%8016.03c    2.422E-02
+%5010.03c    4.794E-06
+%5011.03c    1.942E-05
+
+% --- MOD2:
+mat water  sum tmp 575 rgb 0 0 255 moder lwtr 1001
+1001.03c   4.843E-02
+8016.03c   2.422E-02
+
+% --- MOD3:
+%mat water   sum tmp 300 rgb 0 0 255 moder lwtr 1001
+%1001.03c    6.717E-02
+%8016.03c    3.358E-02
+
+% --- Thermal scattering data for light water:
+
+therm lwtr 575 lwe7.10t lwe7.12t
+
+% --- Black boundary condition:
+
+set bc 2 2 2
+
+set power 18404908
+
+set inventory
+ 922320
+ 922350
+ 922360
+ 922380
+ 942360
+ 942380
+ 942390
+ 942400
+ 942410
+ 942420
+ 581370
+ 962440
+ 541350
+ 621490
+ 641550
+ 641570
+
+% --- Neutron population and criticality cycles:
+
+set pop 20000 15000 500
+
+% --- Geometry and mesh plots:
+
+
+plot 3 20000 20000
+plot 33 20000 20000
+plot 2 20000 20000
+mesh 3 5000 5000 
+mesh 10 3 5000 5000
+
+% --- Decay data library:
+
+set declib "/home/SHARED/Serpent/xsdata/ENDFB7/sss_endfb7.dec"
+
+% --- Neutron induced fission yield library:
+
+set nfylib "/home/SHARED/Serpent/xsdata/ENDFB7/sss_endfb7.nfy"
+
+% --- library
+
+set acelib "/home/SHARED/Serpent/xsdata/ENDFB7/sss_endfb7.xsdata" 
